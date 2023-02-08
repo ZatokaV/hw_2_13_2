@@ -16,16 +16,13 @@ def reformat_author_name(name):
 
 def main(request):
     quotes = Quote.objects.all()
-    authors = Author.objects.all()
-    tags = Tag.objects.all()
-
 
     paginator = Paginator(quotes, 10)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
     return render(request, "quotesapp/index.html",
-                  context={"authors": authors, "quotes": quotes, "tags": tags, "page_obj": page_obj})
+                  context={"quotes": quotes, "page_obj": page_obj})
 
 
 @login_required

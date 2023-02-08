@@ -12,6 +12,7 @@ django = "^4.1.6"
 psycopg2 = "^2.9.5"
 pymongo = {extras = ["srv", "tls"], version = "^4.3.3"}
 mongoengine = "^0.26.0"
+sqlalchemy = "^2.0.2"
 
 
 [build-system]

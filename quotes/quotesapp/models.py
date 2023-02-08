@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 
@@ -27,3 +28,14 @@ class Quote(models.Model):
 
     def __str__(self):
         return f"{self.text}: {self.author}, {self.tags}"
+
+    def show_quote_text(self):
+        return self.text
+
+    def show_quote_author(self):
+        return self.author
+
+    def show_quote_tags(self):
+        tag_obj = self.tags.all()
+        return tag_obj
+
