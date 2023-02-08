@@ -1,7 +1,6 @@
-from bson import ObjectId
-from mongoengine import connect
-from pymongo import MongoClient
 import json
+
+from pymongo import MongoClient
 
 client = MongoClient("mongodb://localhost:27017/")
 
@@ -31,8 +30,7 @@ for el in result:
     dict_to_write = {}
 
 with open('quotes/authors.json', 'a', encoding='utf-8') as a_file:
-    json.dump(all_authors, a_file,  ensure_ascii=False)
-
+    json.dump(all_authors, a_file, ensure_ascii=False)
 
 all_quotes = []
 temp_dict = {}
@@ -45,6 +43,5 @@ for el in result:
     all_quotes.append(temp_dict)
     temp_dict = {}
 
-
 with open('quotes/quotes.json', 'a', encoding='utf-8') as q_file:
-    json.dump(all_quotes, q_file,  ensure_ascii=False)
+    json.dump(all_quotes, q_file, ensure_ascii=False)

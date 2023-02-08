@@ -1,4 +1,3 @@
-from django.db.models import ManyToManyField
 from django.forms import ModelForm, CharField, TextInput, ModelChoiceField
 
 from .models import Tag, Author, Quote

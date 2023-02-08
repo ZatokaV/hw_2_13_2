@@ -1,9 +1,6 @@
 from django.db import models
 
 
-# Create your models here.
-
-
 class Tag(models.Model):
     name = models.CharField(max_length=50, null=False, unique=True)
 
@@ -38,4 +35,3 @@ class Quote(models.Model):
     def show_quote_tags(self):
         tag_obj = self.tags.all()
         return tag_obj
-

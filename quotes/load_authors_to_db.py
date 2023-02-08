@@ -17,6 +17,5 @@ with open("authors.json", 'r', encoding='utf-8') as a:
 
 print(final_load)
 
-
 with open('final_authors.json', 'w', encoding='utf-8') as a:
     json.dump(final_load, a, ensure_ascii=False)
