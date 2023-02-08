@@ -1,7 +1,6 @@
 {% extends "quotesapp/base.html" %}
 
 {% block content %}
-<title>Add tag</title>
 
 <form method="POST" action="{% url 'quotesapp:addtag' %}">
     {% csrf_token %}

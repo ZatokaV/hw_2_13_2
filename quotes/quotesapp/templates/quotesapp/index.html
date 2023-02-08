@@ -1,15 +1,9 @@
 {% extends "quotesapp/base.html" %}
 
-{% load poll_extras %}
+<!--{% load poll_extras %}-->
 
 {% block content %}
 
-<h1>All tags</h1>
-{% most_popular_tags %}
-
-<!--{% for tag in quote.most_popular_tags %}-->
-<!--<a href="#" class="btn btn-primary">|{{ tag }}|</a>-->
-<!--{% endfor %}-->
 
 <h1>All quotes</h1>
 
@@ -18,10 +12,10 @@
 <div class="card" ,>
     <div class="card-body">
         <strong class="author-name">{{ el.show_quote_author }}</strong>
-        <a href="#" class="btn btn-primary">More about author</a>
+        <a href="author/{{ el.show_quote_author }}" class="btn btn-primary">More about author</a>
         <p class="card-text">{{ el.show_quote_text }}</p>
         {% for tag in el.show_quote_tags %}
-        <a href="#" class="btn btn-primary">|{{ tag }}|</a>
+        <a href="tag/{{ tag }}" class="btn btn-primary">|{{ tag }}|</a>
         {% endfor %}
         <hr>
     </div>

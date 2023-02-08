@@ -1,7 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views import View
 
 from .forms import TagForm, AuthorForm, QuoteForm
 from .models import Tag, Author, Quote
@@ -9,20 +8,14 @@ from .models import Tag, Author, Quote
 
 # Create your views here.
 
-
-def reformat_author_name(name):
-    return name.replace(' ', '-')
+def change_name(name):
+    return name.replace(" ", "-")
 
 
 def main(request):
     quotes = Quote.objects.all()
 
-    paginator = Paginator(quotes, 10)
-    page_number = request.GET.get("page")
-    page_obj = paginator.get_page(page_number)
-
-    return render(request, "quotesapp/index.html",
-                  context={"quotes": quotes, "page_obj": page_obj})
+    return render(request, "quotesapp/index.html", context={"quotes": quotes})
 
 
 @login_required
@@ -72,9 +65,13 @@ def addqoute(request):
     return render(request, 'quotesapp/addquote.html', {"tags": tags, "authors": authors, 'form': QuoteForm()})
 
 
-class AuthorPage(View):
-    template_name = "noteapp/author.html"
+def author_page(request, fullname):
+    authors = get_object_or_404(Author, fullname=fullname)
 
-    def get(self, request, fullname):
-        author = get_object_or_404(Author, full_name=fullname)
-        return render(request, self.template_name, {"author": author})
+    return render(request, "quotesapp/author.html", {"author": authors})
+
+
+def tag_page(request, tag):
+    tags = get_object_or_404(Tag, name=tag)
+    quotes = Quote.objects.all()
+    return render(request, "quotesapp/tag.html", {"tag": tags, "quotes": quotes})
